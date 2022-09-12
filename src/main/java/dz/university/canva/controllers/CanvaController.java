@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import dz.university.canva.models.Canva;
 import dz.university.canva.models.CanvaParent;
 import io.swagger.annotations.ApiOperation;
@@ -62,12 +61,14 @@ public class CanvaController {
 	}
 	
 	@GetMapping(value = {"", "/"})
+	@CrossOrigin(origins="http://localhost:3000")
 	@ApiParam(value = "this method allows you to get all the canvas")
 	public Map<String, List<CanvaParent>> findAll() {
 		return canvaMap;
 	}
 	
 	@PutMapping(value = {"", "/"})
+	@CrossOrigin(origins="http://localhost:3000")
 	@ApiParam(value = "this method allows you to get all the canvas")
 	public CanvaParent update(@RequestBody CanvaParent canva) {
 		for(int i=0; i<canvas.size(); i++) {
