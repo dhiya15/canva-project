@@ -1,6 +1,9 @@
 package dz.university.canva.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
 
 public class Canva {
 	
@@ -27,6 +30,11 @@ public class Canva {
 	@ApiModelProperty(notes = "double variable (we will write the description later)")
 	private double evolutionprolast;
 
+	private List<Canva> children;
+
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private Canva parent;
+
 	public Canva(String n, String agregats, double comptesSCF, double moisD, double moisF, double evolutionval,
 			double evolutionpro, double cumulD, double cumulF, double evolutionvallast, double evolutionprolast) {
 		super();
@@ -42,7 +50,22 @@ public class Canva {
 		this.evolutionvallast = evolutionvallast;
 		this.evolutionprolast = evolutionprolast;
 	}
-	
+
+	public Canva(String n, String agregats, double comptesSCF, double moisD, double moisF, double evolutionval,
+							 double evolutionpro, double cumulD, double cumulF, double evolutionvallast, double evolutionprolast, List<Canva> children) {
+		this.n = n;
+		this.agregats = agregats;
+		this.comptesSCF = comptesSCF;
+		this.moisD = moisD;
+		this.moisF = moisF;
+		this.evolutionval = evolutionval;
+		this.evolutionpro = evolutionpro;
+		this.cumulD = cumulD;
+		this.cumulF = cumulF;
+		this.evolutionvallast = evolutionvallast;
+		this.evolutionprolast = evolutionprolast;
+		this.children = children;
+	}
 
 	public Canva() {
 		super();
@@ -135,5 +158,20 @@ public class Canva {
 	public void setEvolutionprolast(double evolutionprolast) {
 		this.evolutionprolast = evolutionprolast;
 	}
-	
+
+	public List<Canva> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Canva> children) {
+		this.children = children;
+	}
+
+	public Canva getParent() {
+		return parent;
+	}
+
+	public void setParent(Canva parent) {
+		this.parent = parent;
+	}
 }
